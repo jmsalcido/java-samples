@@ -2,7 +2,6 @@ package org.otfusion.validation;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
-import java.util.HashSet;
 import java.util.LinkedHashSet;
 import java.util.Set;
 
