@@ -3,6 +3,7 @@ package org.otfusion.validation;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import java.util.HashSet;
+import java.util.LinkedHashSet;
 import java.util.Set;
 
 /**
@@ -16,7 +17,7 @@ public class EnumNameValidator implements ConstraintValidator<EnumName, String> 
     public void initialize(EnumName annotation) {
         Class<? extends Enum> enumSelectedArray[] = annotation.enumsToValidate();
 
-        validValues = new HashSet<>();
+        validValues = new LinkedHashSet<>();
 
         for (Class<? extends Enum> enumSelected : enumSelectedArray) {
             Enum[] enumConstants = enumSelected.getEnumConstants();
