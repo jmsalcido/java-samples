@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    api 'commons-validator:commons-validator:1.4.0'
+    api 'javax.validation:validation-api:2.0.1.Final'
+
+    testImplementation 'org.hibernate:hibernate-validator:5.2.4.Final'
+    testImplementation 'javax.el:javax.el-api:2.2.4'
+
+}
