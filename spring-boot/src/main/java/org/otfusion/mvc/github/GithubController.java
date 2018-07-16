@@ -1,5 +1,6 @@
 package org.otfusion.mvc.github;
 
+import org.otfusion.mvc.github.http.GithubClient;
 import org.otfusion.mvc.github.model.Repository;
 import org.otfusion.mvc.github.model.User;
 import org.springframework.stereotype.Controller;

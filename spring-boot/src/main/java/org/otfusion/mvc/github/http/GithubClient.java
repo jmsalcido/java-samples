@@ -1,4 +1,4 @@
-package org.otfusion.mvc.github;
+package org.otfusion.mvc.github.http;
 
 import org.otfusion.mvc.github.model.Repository;
 import org.otfusion.mvc.github.model.User;
@@ -19,25 +19,35 @@ public class GithubClient {
 
     private final RestTemplate restTemplate;
 
-    public GithubClient(RestTemplateBuilder builder) {
-        this.restTemplate = builder.build();
+    public GithubClient(RestTemplateBuilder builder, GithubTokenInterceptor githubTokenInterceptor) {
+        this.restTemplate = builder
+                .additionalInterceptors(githubTokenInterceptor)
+                .build();
     }
 
-    List<Repository> getAllRepositories(String username) {
+    public List<Repository> getAllRepositories(String username) {
         ResponseEntity<Repository[]> entity =
                 restTemplate.getForEntity(REPOS_URL, Repository[].class, username);
 
         List<Repository> response = Collections.emptyList();
-        if (entity.getBody() != null) {
+        boolean hasBody = entity.getStatusCode().is2xxSuccessful() && entity.getBody() != null;
+
+        if (hasBody) {
             response = Arrays.asList(entity.getBody());
         }
+
         return response;
     }
 
-    User getUser(String username) {
+    public User getUser(String username) {
         ResponseEntity<User> userResponseEntity = restTemplate.getForEntity(USER_URL, User.class, username);
 
-        return userResponseEntity.getBody();
+        User user = null;
+        if (userResponseEntity.getStatusCode().is2xxSuccessful()) {
+            user = userResponseEntity.getBody();
+        }
+
+        return user;
     }
 
 }
