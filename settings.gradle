@@ -11,3 +11,4 @@ rootProject.name = 'java-samples'
 
 include ':validation'
 include ':spring-boot'
+include ':jfreechart'
