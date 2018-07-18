@@ -1,7 +1,7 @@
 package org.otfusion.mvc.github.http;
 
-import org.otfusion.mvc.github.model.Repository;
-import org.otfusion.mvc.github.model.User;
+import org.otfusion.mvc.github.common.Repository;
+import org.otfusion.mvc.github.common.User;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Component;

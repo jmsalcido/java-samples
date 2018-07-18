@@ -1,4 +1,4 @@
-package org.otfusion.mvc.github.model;
+package org.otfusion.mvc.github.common;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;

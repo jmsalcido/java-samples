@@ -1,8 +1,8 @@
 package org.otfusion.mvc.github;
 
 import org.otfusion.mvc.github.http.GithubClient;
-import org.otfusion.mvc.github.model.Repository;
-import org.otfusion.mvc.github.model.User;
+import org.otfusion.mvc.github.common.Repository;
+import org.otfusion.mvc.github.common.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;

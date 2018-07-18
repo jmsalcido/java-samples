@@ -8,7 +8,18 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
-    protected void configure(HttpSecurity http) {
-        // TODO override configuration here.
+    protected void configure(HttpSecurity http) throws Exception {
+        http.authorizeRequests().antMatchers("/").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/github/**").permitAll()
+                .and()
+                .authorizeRequests().antMatchers("/h2-console/**").permitAll()
+                .and()
+                .headers().frameOptions().disable()
+                .and()
+                .csrf().ignoringAntMatchers("/h2-console/**")
+                .and()
+                .cors().disable();
     }
+
 }
