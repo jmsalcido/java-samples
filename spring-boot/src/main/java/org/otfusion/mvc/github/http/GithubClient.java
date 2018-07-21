@@ -16,6 +16,7 @@ public class GithubClient {
 
     private static final String REPOS_URL = "https://api.github.com/users/{username}/repos";
     private static final String USER_URL = "https://api.github.com/users/{username}";
+    private static final String REPO_URL = "https://api.github.com/repos/{username}/{repositoryName}";
 
     private final RestTemplate restTemplate;
 
@@ -37,6 +38,20 @@ public class GithubClient {
         }
 
         return response;
+    }
+
+    public Repository getRepository(String username, String repositoryName) {
+        ResponseEntity<Repository> entity =
+                restTemplate.getForEntity(REPO_URL, Repository.class, username, repositoryName);
+
+        boolean hasBody = entity.getStatusCode().is2xxSuccessful() && entity.getBody() != null;
+
+        Repository repository = null;
+        if (hasBody) {
+            repository = entity.getBody();
+        }
+
+        return repository;
     }
 
     public User getUser(String username) {
