@@ -23,6 +23,8 @@ import java.awt.*;
 import java.awt.geom.Rectangle2D;
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -31,6 +33,7 @@ import java.util.List;
 class JfreeChartExample {
 
     private static final Color TRANSPARENT = new Color(0f, 0f, 0f, 0f);
+    public static final String OUT_FILE_PNG = "./out/file.png";
 
     void drawChart() throws Exception {
         JFreeChart xyLineChart = ChartFactory.createXYLineChart("", "", "",
@@ -195,8 +198,8 @@ class JfreeChartExample {
         xyPlot.getRangeAxis().setUpperBound(4d);
         xyPlot.getRangeAxis().setTickLabelFont(font1.deriveFont(15f));
 
-        ChartUtilities.saveChartAsPNG(new File("./file.png"), xyLineChart, 720, 250);
-
+        Files.createDirectory(Paths.get("out/"));
+        ChartUtilities.saveChartAsPNG(new File(OUT_FILE_PNG), xyLineChart, 720, 250);
     }
 
     private XYDataset createDataset() {

@@ -25,6 +25,6 @@ public class App implements CommandLineRunner {
             e.printStackTrace();
         }
 
-        System.out.println("DONE");
+        System.out.println("DONE, check: " + JfreeChartExample.OUT_FILE_PNG);
     }
 }
