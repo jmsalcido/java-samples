@@ -1,2 +1,25 @@
 github:
   token: ""
+
+
+management:
+  info:
+    git:
+      mode: simple
+    build:
+      enabled: true
+  endpoint:
+    health:
+      show-details: always
+      roles: "ADMIN"
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+
+info:
+  app:
+    info: "Spring Boot Examples"
+    description: "Samples by @jmsalcido"
+    version: "1.0"
